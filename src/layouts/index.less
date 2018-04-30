@@ -1,0 +1,68 @@
+@import '~antd/lib/style/themes/default.less';
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+@mioji-logo-width: image-width('../assets/img/mioji.png');
+
+@keyframes fadeIn{
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
+.fadeIn(@time:1s,@ease:ease-out,@fillmode:backwards){
+  animation-name:fadeIn;
+  animation-duration:@time;
+  animation-timing-function:@ease;
+  animation-fill-mode:@fillmode;
+}
+
+.logo {
+  height: 64px;
+  position: relative;
+  line-height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  background: #002140;
+  overflow: hidden;
+}
+
+.img_normal {
+    display: inline-block;
+    vertical-align: middle;
+    height: 34px;
+    .fadeIn(1s,ease-in-out);
+  }
+
+.img_mini {
+    display: inline-block;
+    vertical-align: middle;
+    // .fadeIn(2s,ease-in-out,backwards);    
+  }
+
+.sider {
+    min-height: 100vh;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+    position: relative;
+    z-index: 10;
+}
+
+.content {
+  // margin: 8px 8px;
+  // display: flex;
+  // justify-content: space-around;
+}
+
+.content_box_uncollapsed {
+  margin: 0px 16px;
+  padding: 16px;
+  min-height: 90vh;
+  background: #fff;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.content_box_collapsed {
+  margin: 0px 48px;
+  padding: 16px;
+  min-height: 80vh;
+  background: #fff;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
