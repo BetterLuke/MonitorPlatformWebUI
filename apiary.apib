@@ -1,0 +1,90 @@
+FORMAT: 1A
+
+# Awesome
+
+Master节点接口设计。
+
+# Data Structure
+
+## `HostInfo` (object)
+
++ id: 1 (string) - 主机ID
++ ip_inner: 1.1.1.1 (string) - 主机内网IP
++ ip_out: 2.2.2.2 (string) - 主机外网IP
++ hostname: 数据检索 (string) - 主机名
++ env: online (string) - 主机所属环境
++ owner: 数据检索组 (string) - 主机所属者
++ name: 测试服务器 (string) - 主机的名字
++ comment: My NO.1 Owesome Server (string) - 主机的备注
+
+
+## Hosts Monitor [/hostmanager]
+
+### List All Hosts [GET]
+
+获取所有主机列表。
+
++ Response 200 (application/json)
+
+    + Attributes (array[HostInfo])
+    
+## Host [/hostmanager/{id}]
+
+主机的CRUD
+
+### Create a Host Record [PUT]
+
+注册一个新主机到监控列表里。
+
++ Request (application/json)
+
+    + Headers
+    
+            Authentication: Bearer JWT
+    
+    + Attributes (HostInfo)
+
++ Response 200 (application/json)
+
+        {
+            "message": "success"
+            "error_info":""
+        }
+
+### Update a Host Record [POST]
+
+修改一个主机信息
+
++ Request (application/json)
+
+    + Headers
+        
+            Authentication: Bearer JWT
+    
+    
+    + Attributes (HostInfo)
+
++ Response 200 (application/json)
+
+        {
+            "message": "success"
+            "error_info":""
+        }
+        
+### Remove a Host Record [DELETE]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authentication: Bearer JWT
+    
+    
+    + Attributes (HostInfo)
+
++ Response 200 (application/json)
+
+        {
+            "message": "success"
+            "error_info":""
+        }
