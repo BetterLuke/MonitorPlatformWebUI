@@ -108,5 +108,4 @@ class CoolSider extends React.Component {
     }
 }
 
-
-export default CoolSider
+export default CoolSider;
