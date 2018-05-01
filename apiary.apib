@@ -1,0 +1,42 @@
+FORMAT: 1A
+
+# Awesome
+
+Master节点接口设计。
+
+# Data Structure
+
+## `HostInfo` (object)
+
++ id: 1 (string) - 主机的ID
++ ip: 1.1.1.1 (string) - 主机的IP
++ name: 测试服务器 (string) - 主机的名字
++ comment: My NO.1 Owesome Server (string) - 主机的备注
+
+## Foundation Monitor [/foundations]
+
+### List All Hosts [GET]
+
+获取所有主机列表。
+
++ Response 200 (application/json)
+
+        + Attributes (array[HostInfo])
+
+### Create a Host Record [POST]
+
+注册一个新主机到监控列表里。
+
++ Request (application/json)
+
+    + Headers
+    
+            Authentication: Bearer JWT
+    
+    + Attributes (array[HostInfo])
+
++ Response 200 (application/json)
+
+        {
+            "message": "success"
+        }
