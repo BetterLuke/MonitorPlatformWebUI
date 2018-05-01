@@ -61,8 +61,8 @@ class CoolSider extends React.Component {
 
                     </SubMenu>
 
-                    <MenuItem key="/hostManage" title="主机管理">
-                        <Link to="/hostManage">
+                    <MenuItem key="/hostmanager" title="主机管理">
+                        <Link to="/hostmanager">
                             <Icon type="solution" />
                             <span> 主机管理 </span>
                         </Link>

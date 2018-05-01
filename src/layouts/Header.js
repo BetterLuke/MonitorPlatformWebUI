@@ -9,9 +9,6 @@ function CoolHeader({onCollapse, collapsed, breadcrumb}) {
     return (
         <Header
             className={styles.header} >
-             <Breadcrumb className={styles.bread} >
-                        <Breadcrumb.Item>{breadcrumb}</Breadcrumb.Item>
-            </Breadcrumb>
         </Header>
     )
 }
