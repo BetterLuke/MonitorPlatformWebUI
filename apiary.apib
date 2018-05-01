@@ -8,8 +8,11 @@ Master节点接口设计。
 
 ## `HostInfo` (object)
 
-+ id: 1 (string) - 主机的ID
-+ ip: 1.1.1.1 (string) - 主机的IP
++ id: 1 (string) - 主机ID
++ ip_inner: 1.1.1.1 (string) - 主机内网IP
++ ip_out: 2.2.2.2 (string) - 主机外网IP
++ env: online (string) - 主机所属环境
++ owner: 数据检索组 (string) - 主机所属者
 + name: 测试服务器 (string) - 主机的名字
 + comment: My NO.1 Owesome Server (string) - 主机的备注
 
