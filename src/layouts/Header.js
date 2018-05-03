@@ -13,10 +13,4 @@ function CoolHeader({onCollapse, collapsed, breadcrumb}) {
     )
 }
 
-const mapStateToProps = (state) => (state.app)
-
-const mapDispatchToProps = {
-    onCollapse: () => ({type: 'app/switchSider'})
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CoolHeader)
+export default CoolHeader;
