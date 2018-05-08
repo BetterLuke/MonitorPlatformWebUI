@@ -14,8 +14,14 @@ Master节点接口设计。
 + hostname: 数据检索 (string) - 主机名
 + env: online (string) - 主机所属环境
 + owner: 数据检索组 (string) - 主机所属者
-+ name: 测试服务器 (string) - 主机的名字
++ dominname: 测试服务器 (string) - 主机的名字
 + comment: My NO.1 Owesome Server (string) - 主机的备注
+
+## `Response` (object)
+
++ message: Success (string) - 服务器相应结果信息
++ error: 0 (string) - 服务器返回错误信息
++ data (HostInfo) - 服务器返回数据
 
 
 ## Hosts Monitor [/hostmanager]
@@ -27,64 +33,51 @@ Master节点接口设计。
 + Response 200 (application/json)
 
     + Attributes (array[HostInfo])
-    
-## Host [/hostmanager/{id}]
 
-主机的CRUD
-
-### Create a Host Record [PUT]
+### Create a Host Record [POST]
 
 注册一个新主机到监控列表里。
 
 + Request (application/json)
-
-    + Headers
-    
-            Authentication: Bearer JWT
     
     + Attributes (HostInfo)
 
 + Response 200 (application/json)
+    
+    + Attributes (Response)
+    
 
-        {
-            "message": "success"
-            "error_info":""
-        }
+## Host Handler [/hostmanager/{host_id}]
 
-### Update a Host Record [POST]
+### Update a Host Record [PUT]
 
 修改一个主机信息
 
 + Request (application/json)
 
-    + Headers
+    + Parameters
+        + host_id (number) 
         
-            Authentication: Bearer JWT
-    
+            ID of the host in the form of an integer
     
     + Attributes (HostInfo)
 
 + Response 200 (application/json)
 
-        {
-            "message": "success"
-            "error_info":""
-        }
+    + Attributes (Response)
+        
         
 ### Remove a Host Record [DELETE]
 
 + Request (application/json)
-
-    + Headers
-        
-            Authentication: Bearer JWT
+    
+    + Parameters
+        + host_id (number)
+            
+            ID of the Question in the form of an integer)
     
     
-    + Attributes (HostInfo)
 
 + Response 200 (application/json)
-
-        {
-            "message": "success"
-            "error_info":""
-        }
+    
+    + Attributes (Response)
