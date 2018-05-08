@@ -21,7 +21,7 @@ Master节点接口设计。
 
 + message: Success (string) - 服务器相应结果信息
 + error: 0 (string) - 服务器返回错误信息
-+ data (HostInfo) - 服务器返回数据
++ data (array[HostInfo]) - 服务器返回数据
 
 # Group Hosts
 
@@ -33,7 +33,7 @@ Master节点接口设计。
 
 + Response 200 (application/json)
 
-    + Attributes (Response)
++ Attributes (Response)
 
 ### Create a Host Record [POST]
 
