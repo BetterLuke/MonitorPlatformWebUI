@@ -36,7 +36,7 @@ class HostModal extends React.Component {
     render() {
         const {children} = this.props;
         const {getFieldDecorator} = this.props.form;
-        const {hostname, ip_in, ip_out, comment, env, owner,dominname} = this.props.record;
+        const {hostname, ip_inner, ip_out, comment, env, owner,dominname} = this.props.record;
         const formItemLayout = {
             labelCol: {
                 span: 6
@@ -64,7 +64,7 @@ class HostModal extends React.Component {
                             {getFieldDecorator('hostname', {initialValue: hostname})(<Input placeholder="请以不带空格的英文表述"/>)}
                         </FormItem>
                         <FormItem {...formItemLayout} label="内网IP">
-                            {getFieldDecorator('ip_in', {initialValue: ip_in})(<Input/>)}
+                            {getFieldDecorator('ip_inner', {initialValue: ip_inner})(<Input/>)}
                         </FormItem>
                         <FormItem {...formItemLayout} label="外网IP">
                             {getFieldDecorator('ip_out', {initialValue: ip_out})(<Input/>)}
@@ -83,7 +83,7 @@ class HostModal extends React.Component {
                             </Select> )}
                         </FormItem>
                         <FormItem {...formItemLayout} label="备注">
-                            {getFieldDecorator('comment', {initialValue: hostname})(<TextArea placeholder="填写主机的备注信息：配置，使用说明等" autosize={{ minRows: 2, maxRows: 6 }}/>)}
+                            {getFieldDecorator('comment', {initialValue: comment})(<TextArea placeholder="填写主机的备注信息：配置，使用说明等" autosize={{ minRows: 2, maxRows: 6 }}/>)}
                         </FormItem>
                     </Form>
                 </Modal>

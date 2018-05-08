@@ -1,7 +1,6 @@
 import {Layout, Row, Col} from 'antd';
 import styles from "./index.less";
 import CoolSider from './Sider';
-import Link from 'umi/link';
 import withRouter from 'umi/withRouter';
 import Header from './Header';
 import {connect} from 'dva';

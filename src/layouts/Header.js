@@ -1,5 +1,4 @@
-import { Button, Breadcrumb, Layout, Icon } from 'antd';
-import { connect } from 'dva';
+import { Layout } from 'antd';
 import styles from "./header.less";
 
 

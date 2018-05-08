@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'umi/link';
 import { Icon, Menu, Layout } from 'antd';
-import { connect } from 'dva';
 import styles from './index.less';
 
 const MenuItem = Menu.Item
