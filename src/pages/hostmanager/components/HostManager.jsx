@@ -1,7 +1,8 @@
-import { Table, Button, Popconfirm } from 'antd';
+import { Table, Button, Popconfirm, message } from 'antd';
 import React from 'react';
 import HostModal from './HostModal';
 import { connect } from 'dva';
+
 
 class HostManger extends React.Component {
 
@@ -15,7 +16,11 @@ class HostManger extends React.Component {
   }
 
   createHandler = (values) => {
-    console.log(values)
+    console.log(values)    
+    this.props.dispatch({
+      type: 'hostmanager/create',
+      payload: values
+    })
   }
 
   deleteHandler = () => {
@@ -57,6 +62,12 @@ class HostManger extends React.Component {
 
   render() {
     const { data, message, error, loading } = this.props;
+    console.log(message)
+    console.log(JSON.stringify(message) + ' ' + JSON.stringify(error))
+
+    if(JSON.stringify(error) !== '0' && error !== '') {
+      message.error("发生错误，请重试！", 3);
+    } 
     const { selectedRowKeys } = this.state;
     const rowSelection = {
       selectedRowKeys,
@@ -67,17 +78,25 @@ class HostManger extends React.Component {
       <div>
         <div style={{ marginBottom: 16 }}>
 
+        <Button
+            onClick={ () =>{this.props.dispatch({
+              type: 'hostmanager/fetch'              
+            })} }
+            loading={loading}>
+            刷新
+          </Button>
+          
           <HostModal record={{}} onOk={this.createHandler} >
             <Button type="add">
               添加
             </Button>
           </HostModal>
+          
 
           <Button
             type="primary"
             onClick={this.deleteHandler}
             disabled={!hasSelected}
-            loading={loading}
           >
             删除
               </Button>

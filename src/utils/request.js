@@ -25,6 +25,7 @@ export default function request(url, options) {
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)
+    // .then(data => {console.log(data); return{message: data.message, error: data.error, data: data.data}})
     .then(data => ({ message: data.message, error: data.error, data: data.data}))
     .catch(err => ({ err }));
 }
