@@ -16,7 +16,6 @@ class HostManger extends React.Component {
   }
 
   createHandler = (values) => {
-    console.log(values)    
     this.props.dispatch({
       type: 'hostmanager/create',
       payload: values
@@ -24,11 +23,23 @@ class HostManger extends React.Component {
   }
 
   deleteHandler = () => {
-
+    const selectedRowKeys = this.state.selectedRowKeys
+    selectedRowKeys.forEach((id) => {
+      this.props.dispatch({
+        type: 'hostmanager/remove',
+        payload: id
+      })
+    })
+    this.setState({
+      selectedRowKeys: []
+    })
   }
 
-  updateHandler = () => {
-
+  editHandler = (id, values) => {
+    this.props.dispatch({
+      type: 'hostmanager/patch',
+      payload: {id, values}
+    })
   }
 
   columns = [{
@@ -53,7 +64,7 @@ class HostManger extends React.Component {
     title: "操作",
     render: (text, record) => (
       <span>
-        <HostModal record={record} onOk={this.createHandler}>
+        <HostModal record={record} onOk={this.editHandler.bind(null, record.id)}>
           <Button>编辑</Button>
         </HostModal>
       </span>
@@ -62,9 +73,6 @@ class HostManger extends React.Component {
 
   render() {
     const { data, message, error, loading } = this.props;
-    console.log(message)
-    console.log(JSON.stringify(message) + ' ' + JSON.stringify(error))
-
     if(JSON.stringify(error) !== '0' && error !== '') {
       message.error("发生错误，请重试！", 3);
     } 

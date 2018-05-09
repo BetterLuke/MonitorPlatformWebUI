@@ -10,7 +10,6 @@ export default {
     reducers: {
         save(state, {payload: {data, message, error}}) {
             if(typeof(data) == 'undefined') {
-                console.log(message)
                 return {...state, message, error}
             } else{
                 return {...state, data, message, error}                
@@ -27,6 +26,16 @@ export default {
             yield put({type: 'save', payload: {message, error}})
             yield put({type: 'fetch'})
         },
+        *remove({payload: id}, {call, put}) {
+            const {message, error} = yield call(hostManagerService.remove, id)
+            yield put({type: 'save', payload: {message, error}})
+            yield put({type: 'fetch'})
+        },
+        *patch({payload: {id, values}}, {call, put}) {
+            const {message, error} = yield call(hostManagerService.patch, id, values)
+            yield put({type: 'save', payload: {message, error}})
+            yield put({type: 'fetch'})            
+        }
     },
     subscriptions: {
         setup({dispatch, history}) {

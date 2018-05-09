@@ -36,7 +36,7 @@ class HostModal extends React.Component {
     render() {
         const {children} = this.props;
         const {getFieldDecorator} = this.props.form;
-        const {hostname, ip_inner, ip_out, comment, env, owner,dominname} = this.props.record;
+        const {hostname, ip_inner, ip_out, comment, env, owner, dominname} = this.props.record;
         const formItemLayout = {
             labelCol: {
                 span: 6
