@@ -88,16 +88,18 @@ class HostManger extends React.Component {
         <Table 
           rowSelection={rowSelection}
           columns={this.columns}
+          loading={loading}
           dataSource={data}
+          rowKey = {record => record.id}
           expandedRowRender={record => <p style={{ margin: 0 }}>{record.comment}</p>} />
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  const { data, message, error } = state.hostmanager;
-  return { data, message, error, loading: state.loading.models.hostmanager };
+const mapStateToProps = (state) => {
+  const { data, message, error} = state.hostmanager;
+  return {data, message, error, loading: state.loading.models.hostmanager}
 }
 
 export default connect(mapStateToProps)(HostManger)

@@ -13,15 +13,18 @@ export default {
         },
     },
     effects: {
-        *fetch({}, {call, put}) {
+        *fetch({payload}, {call, put}) {
             const {data, message, error} = yield call(hostManagerService.query);
-            console.log(data);
             yield put({type: 'save', payload: {data, message, error}});
         },
     },
     subscriptions: {
-        setup({dispatch}) {
-            dispatch({type: 'fetch'})
+        setup({dispatch, history}) {
+            return history.listen(({pathname, query}) => {
+                if(pathname === '/hostmanager') {
+                    dispatch({type: 'fetch'})
+                }
+            })
         }
     }
 }

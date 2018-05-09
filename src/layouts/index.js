@@ -44,4 +44,4 @@ function MyLayout({children, location, collapsed}) {
     )
 }
 
-export default withRouter(connect((state) => (state.app))(MyLayout))
+export default withRouter(MyLayout)
