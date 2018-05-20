@@ -39,8 +39,8 @@ class CoolSider extends React.Component {
                         key="infrastructure"
                         title={<span><Icon type="user" /><span>DashBoard</span></span>}>
 
-                        <MenuItem key="/hostMonitor" title="主机监控">
-                            <Link to="/hostMonitor">
+                        <MenuItem key="/hostmonitor" title="主机监控">
+                            <Link to="/hostmonitor">
                                 <span> 主机监控 </span>
                             </Link>
                         </MenuItem>

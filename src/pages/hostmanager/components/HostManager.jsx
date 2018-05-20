@@ -38,7 +38,7 @@ class HostManger extends React.Component {
   editHandler = (id, values) => {
     this.props.dispatch({
       type: 'hostmanager/patch',
-      payload: {id, values}
+      payload: { id, values }
     })
   }
 
@@ -57,6 +57,11 @@ class HostManger extends React.Component {
   }, {
     title: '环境',
     dataIndex: 'env',
+    filters: [{ text: 'test', value: 'test' },
+    { text: 'dev', value: 'dev' }, 
+    { text: 'online', value: 'online' }],
+    filterMultiple: false,
+    onFilter: (value, record) => record.env.indexxOf(value) === 0
   }, {
     title: '负责人',
     dataIndex: 'owner',
@@ -73,9 +78,9 @@ class HostManger extends React.Component {
 
   render() {
     const { data, message, error, loading } = this.props;
-    if(JSON.stringify(error) !== '0' && error !== '') {
+    if (JSON.stringify(error) !== '0' && error !== '') {
       message.error("发生错误，请重试！", 3);
-    } 
+    }
     const { selectedRowKeys } = this.state;
     const rowSelection = {
       selectedRowKeys,
@@ -86,20 +91,22 @@ class HostManger extends React.Component {
       <div>
         <div style={{ marginBottom: 16 }}>
 
-        <Button
-            onClick={ () =>{this.props.dispatch({
-              type: 'hostmanager/fetch'              
-            })} }
+          <Button
+            onClick={() => {
+              this.props.dispatch({
+                type: 'hostmanager/fetch'
+              })
+            }}
             loading={loading}>
             刷新
           </Button>
-          
+
           <HostModal record={{}} onOk={this.createHandler} >
             <Button type="add">
               添加
             </Button>
           </HostModal>
-          
+
 
           <Button
             type="primary"
@@ -112,12 +119,12 @@ class HostManger extends React.Component {
             {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
           </span>
         </div>
-        <Table 
+        <Table
           rowSelection={rowSelection}
           columns={this.columns}
           loading={loading}
           dataSource={data}
-          rowKey = {record => record.id}
+          rowKey={record => record.id}
           expandedRowRender={record => <p style={{ margin: 0 }}>{record.comment}</p>} />
       </div>
     )
@@ -125,8 +132,8 @@ class HostManger extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { data, message, error} = state.hostmanager;
-  return {data, message, error, loading: state.loading.models.hostmanager}
+  const { data, message, error } = state.hostmanager;
+  return { data, message, error, loading: state.loading.models.hostmanager }
 }
 
 export default connect(mapStateToProps)(HostManger)
