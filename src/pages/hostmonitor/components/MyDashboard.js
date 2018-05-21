@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { ChartCard, yuan, Field, MiniArea, MiniBar,MiniProgress } from 'ant-design-pro/lib/Charts';
+import { ChartCard, yuan, Field, MiniArea, MiniBar,MiniProgress, Pie } from 'ant-design-pro/lib/Charts';
 import NumberInfo from 'ant-design-pro/lib/NumberInfo'
 import Trend from 'ant-design-pro/lib/Trend';
-import { Row, Col, Icon, Tooltip } from 'antd';
+import { Row, Col, Icon, Tooltip, Card} from 'antd';
 import numeral from 'numeral';
-import styles from './MyDashboard.less'
 import 'ant-design-pro/dist/ant-design-pro.css';
 import moment from 'moment';
 
+//Fake data part
 const visitData = [];
 const beginDay = new Date().getTime();
 for (let i = 0; i < 20; i += 1) {
@@ -17,6 +17,29 @@ for (let i = 0; i < 20; i += 1) {
     });
 }
 
+const mailsPieData = [
+    {
+        x: "通知",
+        y: 622,
+    },
+    {
+        x: "报警",
+        y: 1256,
+    },
+    {
+        x: "行政",
+        y: 45,
+    },
+    {
+        x: "人事",
+        y: 23,
+    },
+    {
+        x: '其他',
+        y: 531,
+    },
+]
+
 class Dashboard extends Component {
 
 
@@ -24,9 +47,27 @@ class Dashboard extends Component {
 
         const topColResponsiveProps = {
             xs: 24,
+            sm: 24,
+            md: 24,
+            lg: 24,
+            xl: 8,
+            style: { marginBottom: 24 },
+        };
+
+        const middleColResponsiveProps01 = {
+            xs: 24,
             sm: 12,
             md: 12,
             lg: 12,
+            xl: 16,
+            style: { marginBottom: 24 },
+        };
+
+        const middleColResponsiveProps02 = {
+            xs: 24,
+            sm: 24,
+            md: 24,
+            lg: 24,
             xl: 8,
             style: { marginBottom: 24 },
         };
@@ -106,6 +147,32 @@ class Dashboard extends Component {
                             />
                             <MiniProgress percent={65} strokeWidth={8}  />
                         </ChartCard>
+                    </Col>
+                </Row>
+                <Row gutter={8}>
+                    <Col {...middleColResponsiveProps01}>
+                            middleColResponsiveProps01
+                    </Col>
+                    <Col {...middleColResponsiveProps02}>
+                            <Card
+                                title="邮件主题占比"
+                                bodyStyle={{ paddingTop:32 }}
+                                style={{ minHeight: 509 }}
+                            >
+                                <Pie
+                                    hasLegend
+                                    title="邮件主题"
+                                    subTitle="邮件主题"
+                                    total={() => (
+                                        <span>5548</span>
+                                    )}
+                                    data={mailsPieData}
+                                    valueFormat={val => (val + "封") }
+                                    height={238}
+                                    lineWidth={4}
+                                />
+                            </Card>
+                            
                     </Col>
                 </Row>
             </Fragment>
