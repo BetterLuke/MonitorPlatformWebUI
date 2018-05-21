@@ -5,8 +5,7 @@ import * as BizCharts from "bizcharts";
 
 
 class MyAnalysis extends React.Component {
-
-
+    
     render() {
         BizCharts.setTheme('dark')
         const data = [
