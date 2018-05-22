@@ -7,6 +7,8 @@ import numeral from 'numeral';
 import 'ant-design-pro/dist/ant-design-pro.css';
 import moment from 'moment';
 
+import InfiniteListExample from './MailsList'
+
 //Fake data part
 const visitData = [];
 const beginDay = new Date().getTime();
@@ -151,7 +153,7 @@ class Dashboard extends Component {
                 </Row>
                 <Row gutter={8}>
                     <Col {...middleColResponsiveProps01}>
-                            middleColResponsiveProps01
+                            <InfiniteListExample/>
                     </Col>
                     <Col {...middleColResponsiveProps02}>
                             <Card
