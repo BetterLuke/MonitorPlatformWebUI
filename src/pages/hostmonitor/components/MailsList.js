@@ -6,7 +6,7 @@ import './MailsList.css'
 import InfiniteScroll from 'react-infinite-scroller';
 import { isReturnStatement } from 'typescript';
 
-const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
+const fakeDataUrl = '/api/maillog';
 
 class InfiniteListExample extends React.Component {
     state = {
@@ -30,7 +30,7 @@ class InfiniteListExample extends React.Component {
     componentDidMount() {
         this.getData((res) => {
             this.setState({
-                data: res.results
+                data: res.data
             })
         })
     }
@@ -49,7 +49,7 @@ class InfiniteListExample extends React.Component {
             return;
         }
         this.getData((res) => {
-            data = data.concat(res.results);
+            data = data.concat(res.data);
             this.setState({
                 data,
                 loading: false,
